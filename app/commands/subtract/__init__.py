@@ -5,9 +5,9 @@ from app.commands import CommandHandler
 
 class subtractCommand(Command):
     def execute(self, *args):
-        """Executes the add command with the provided arguments."""
+        """Executes the subtract command with the provided arguments."""
         if len(args) != 2:
-            print("Error: addCommand requires exactly two arguments.")
+            print("Error: subtractCommand requires exactly two arguments.")
             return
 
         try:
