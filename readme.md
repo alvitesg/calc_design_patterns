@@ -7,7 +7,8 @@ Homework 5 - leveraging a simple calculator approach, I developed an app with co
 ##2. Set up a menu command, which involved dynamically passing the list of command names to a new MenuCommand so it can display available commands.
 
 ##3. Achieved near 100% in testing files
-Name                                Stmts   Miss  Cover
+'''
+### Name                                Stmts   Miss  Cover
 -------------------------------------------------------
 # app/__init__.py                        28      0   100%
 # app/commands/__init__.py               16      1    94%
@@ -22,7 +23,7 @@ Name                                Stmts   Miss  Cover
 # tests/test_app.py                      16      0   100%
 # tests/test_commands.py                109      0   100%
 -------------------------------------------------------
-TOTAL                                 255      3    99%
-
+# TOTAL                                 255      3    99%
+'''
 ##4. Developed Plugin Architecture
 
