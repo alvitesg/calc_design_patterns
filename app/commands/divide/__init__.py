@@ -1,5 +1,5 @@
 import sys
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from app.commands import Command
 from app.commands import CommandHandler
 
@@ -18,10 +18,10 @@ class divideCommand(Command):
                     return
             result = num1 / num2
             print(f"The result of dividing {num1} and {num2} is {result}")
-        except (ValueError, TypeError):
+        except InvalidOperation:
             print(f"Error: Invalid arguments. Both arguments must be numbers.")
         except ZeroDivisionError:
-            print(f"Error: Cannot divide by zero.")
+            print(f"Error: Cannot divide by zero")
             
 # This allows the command to be imported directly from the add package
 __all__ = ['divideCommand']

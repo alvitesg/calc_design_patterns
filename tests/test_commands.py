@@ -6,6 +6,7 @@ from app.commands.greet import GreetCommand
 from app.commands.add import addCommand
 from app.commands.subtract import subtractCommand
 from app.commands.multiply import multiplyCommand
+from app.commands.divide import divideCommand
 
 # pylint: disable=unused-variable, unused-argument
 def test_greet_command(capfd):
@@ -129,4 +130,37 @@ def test_multiply_command_incorrect_argument_count(capfd):
     command.execute("5", "3", "2")
     out, _ = capfd.readouterr()
     assert "Error: multiplyCommand requires exactly two arguments." in out
-    
+
+def test_divide_command_success(capfd):
+    """Test that divideCommand correctly divides two numbers."""
+    command = divideCommand()
+    command.execute("10", "2")
+    out, _ = capfd.readouterr()
+    assert "The result of dividing 10 and 2 is 5\n" in out
+
+def test_divide_command_by_zero(capfd):
+    """Test divideCommand with division by zero."""
+    command = divideCommand()
+    command.execute("10", "0")
+    out, _ = capfd.readouterr()
+    assert "Error: Cannot divide by zero\n" in out
+
+def test_divide_command_invalid_arguments(capfd):
+    """Test divideCommand with non-numeric arguments."""
+    command = divideCommand()
+    command.execute("ten", "two")
+    out, _ = capfd.readouterr()
+    assert "Error: Invalid arguments. Both arguments must be numbers." in out
+
+def test_divide_command_incorrect_argument_count(capfd):
+    """Test divideCommand with incorrect number of arguments."""
+    command = divideCommand()
+    # Too few arguments
+    command.execute("10")
+    out, _ = capfd.readouterr()
+    assert "Error: divideCommand requires exactly two arguments." in out
+
+    # Too many arguments
+    command.execute("10", "2", "1")
+    out, _ = capfd.readouterr()
+    assert "Error: divideCommand requires exactly two arguments." in out
