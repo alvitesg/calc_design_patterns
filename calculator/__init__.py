@@ -1,3 +1,8 @@
+"""This module initializes the calculator package.
+
+It includes basic mathematical operations such as addition, subtraction,
+multiplication, and division.
+"""
 # pylint: disable=invalid-name
 def add(a, b):
     """Add two numbers.
