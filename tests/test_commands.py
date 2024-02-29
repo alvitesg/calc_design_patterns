@@ -5,6 +5,7 @@ from app.commands.exit import ExitCommand
 from app.commands.greet import GreetCommand
 from app.commands.add import addCommand
 from app.commands.subtract import subtractCommand
+from app.commands.multiply import multiplyCommand
 
 # pylint: disable=unused-variable, unused-argument
 def test_greet_command(capfd):
@@ -100,3 +101,32 @@ def test_subtract_command_incorrect_argument_count(capfd):
     command.execute("5", "3", "1")
     out, _ = capfd.readouterr()
     assert "Error: subtractCommand requires exactly two arguments." in out
+
+#Multiply command test
+def test_multiply_command_success(capfd):
+    """Test that multiplyCommand correctly multiplies two numbers."""
+    command = multiplyCommand()
+    command.execute("4", "5")
+    out, _ = capfd.readouterr()
+    assert "The result of multiplying 4 and 5 is 20" in out
+
+def test_multiply_command_invalid_arguments(capfd):
+    """Test multiplyCommand with non-numeric arguments."""
+    command = multiplyCommand()
+    command.execute("four", "five")
+    out, _ = capfd.readouterr()
+    assert "Error: Invalid arguments. Both arguments must be numbers." in out
+
+def test_multiply_command_incorrect_argument_count(capfd):
+    """Test multiplyCommand with incorrect number of arguments."""
+    command = multiplyCommand()
+    # Too few arguments
+    command.execute("5")
+    out, _ = capfd.readouterr()
+    assert "Error: multiplyCommand requires exactly two arguments." in out
+
+    # Too many arguments
+    command.execute("5", "3", "2")
+    out, _ = capfd.readouterr()
+    assert "Error: multiplyCommand requires exactly two arguments." in out
+    
