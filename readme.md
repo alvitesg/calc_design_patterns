@@ -27,5 +27,4 @@ Homework 5 - leveraging a simple calculator approach, I developed an app with co
 '''
 ##4. Developed Plugin Architecture via plugins branch
 
-
-
+##5. Investigated multiprocessing features along with chatGPT but was unable to fix the pytests and the further I kept exploring the worst the tests got. Some key takeaways, understanding the set up for multiprocessing would be interesting. 
