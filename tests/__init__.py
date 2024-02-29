@@ -1,6 +1,6 @@
 '''My calculator test'''
 import pytest
-from calculator import add, subtract, multiply, divide
+from app import add, subtract, multiply, divide
 
 # pylint: disable=invalid-name
 
