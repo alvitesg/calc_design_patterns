@@ -25,5 +25,7 @@ Homework 5 - leveraging a simple calculator approach, I developed an app with co
 -------------------------------------------------------
 # TOTAL                                 255      3    99%
 '''
-##4. Developed Plugin Architecture
+##4. Developed Plugin Architecture via plugins branch
+
+
 
