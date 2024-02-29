@@ -4,6 +4,7 @@ from app import App
 from app.commands.exit import ExitCommand
 from app.commands.greet import GreetCommand
 from app.commands.add import addCommand
+from app.commands.subtract import subtractCommand
 
 # pylint: disable=unused-variable, unused-argument
 def test_greet_command(capfd):
@@ -72,3 +73,30 @@ def test_add_command_failure_incorrect_argument_count(capfd):
     command.execute("1", "2", "3")
     out, err = capfd.readouterr()
     assert "Error: addCommand requires exactly two arguments." in out
+
+def test_subtract_command_success(capfd):
+    """Test that subtractCommand correctly subtracts two numbers."""
+    command = subtractCommand()
+    command.execute("5", "3")
+    out, _ = capfd.readouterr()
+    assert "The result of subtracting 5 and 3 is 2\n" in out
+
+def test_subtract_command_invalid_arguments(capfd):
+    """Test subtractCommand with non-numeric arguments."""
+    command = subtractCommand()
+    command.execute("five", "three")
+    out, _ = capfd.readouterr()
+    assert "Error: Invalid arguments. Both arguments must be numbers." in out
+
+def test_subtract_command_incorrect_argument_count(capfd):
+    """Test subtractCommand with incorrect number of arguments."""
+    command = subtractCommand()
+    # Too few arguments
+    command.execute("5")
+    out, _ = capfd.readouterr()
+    assert "Error: subtractCommand requires exactly two arguments." in out
+
+    # Too many arguments
+    command.execute("5", "3", "1")
+    out, _ = capfd.readouterr()
+    assert "Error: subtractCommand requires exactly two arguments." in out

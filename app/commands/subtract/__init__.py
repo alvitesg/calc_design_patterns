@@ -1,5 +1,5 @@
 import sys
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 from app.commands import Command
 from app.commands import CommandHandler
 
@@ -15,8 +15,8 @@ class subtractCommand(Command):
             num1, num2 = map(Decimal, args)
             result = num1 - num2
             print(f"The result of subtracting {num1} and {num2} is {result}")
-        except (ValueError, TypeError) as e:
-            print(f"Error: Invalid arguments. Both arguments must be numbers. Details: {e}")
+        except InvalidOperation:
+            print(f"Error: Invalid arguments. Both arguments must be numbers.")
 
 # This allows the command to be imported directly from the add package
 __all__ = ['subtractCommand']
