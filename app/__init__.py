@@ -5,7 +5,7 @@ from app.commands.add import addCommand
 from app.commands.subtract import subtractCommand
 from app.commands.multiply import multiplyCommand
 from app.commands.divide import divideCommand
-# from app.commands.menu import MenuCommand
+from app.commands.menu import MenuCommand
 
 class App:
     def __init__(self): # Constructor
@@ -19,8 +19,11 @@ class App:
         self.command_handler.register_command("subtract", subtractCommand())
         self.command_handler.register_command("multiply", multiplyCommand())
         self.command_handler.register_command("divide", divideCommand())
-        # self.command_handler.register_command("menu", MenuCommand)
-
+        
+        # Register MenuCommand
+        menu_command = MenuCommand(self.command_handler)
+        self.command_handler.register_command("menu", menu_command)
+        
         print("Type 'exit' to exit.")
         while True:  #REPL Read, Evaluate, Print, Loop
             user_input = input(">>> ").strip()
