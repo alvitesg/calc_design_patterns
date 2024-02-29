@@ -1,12 +1,12 @@
 """Test plan for commands"""
 import pytest
 from app import App
-from app.commands.exit import ExitCommand
-from app.commands.greet import GreetCommand
-from app.commands.add import addCommand
-from app.commands.subtract import subtractCommand
-from app.commands.multiply import multiplyCommand
-from app.commands.divide import divideCommand
+from app.plugins.exit import ExitCommand
+from app.plugins.greet import GreetCommand
+from app.plugins.add import addCommand
+from app.plugins.subtract import subtractCommand
+from app.plugins.multiply import multiplyCommand
+from app.plugins.divide import divideCommand
 
 # pylint: disable=unused-variable, unused-argument
 def test_greet_command(capfd):
